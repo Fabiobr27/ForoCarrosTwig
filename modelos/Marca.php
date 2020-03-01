@@ -61,7 +61,7 @@ class Marca {
   
     public static function findAll() {
         $db =  Database::getInstance();
-        $db->query("SELECT * FROM Marcas ;");
+        $db->query("SELECT * FROM marcas ;");
 
         $data = [];
         while ($obj = $db->getObject("Marca"))
