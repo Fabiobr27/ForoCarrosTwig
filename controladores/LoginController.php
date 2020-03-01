@@ -80,7 +80,7 @@ class LoginController extends BaseController {
             $usu->insertar();
 
             
-           header("Location: http://fabio.futprofit.com/");
+           header("Location: http://fabio.futprofit.com");
 
         endif;
     }

@@ -60,7 +60,7 @@ class Modelo_Usuario {
 
 
         $db = Database::getInstance();
-        $db->query("SELECT * FROM Usuario us , Modelo_Usuario mu where comentario is not null and mu.codigoMod = 7 and mu.idUsu = us.idUsu Order by Comentario");
+        $db->query("SELECT * FROM usuario us , modelo_usuario mu where comentario is not null and mu.codigoMod = 7 and mu.idUsu = us.idUsu Order by Comentario");
 
         $data = [];
         while ($obj = $db->getObject("Modelo_Usuario"))
@@ -72,7 +72,7 @@ class Modelo_Usuario {
 
     public static function findComentarios($codigoModelo): array {
         $db = Database::getInstance();
-        $db->query("SELECT * FROM Usuario us , Modelo_Usuario mu where comentario is not null and mu.codigoMod = $codigoModelo and mu.idUsu = us.idUsu Order by Comentario;");
+        $db->query("SELECT * FROM usuario us , modelo_usuario mu where comentario is not null and mu.codigoMod = $codigoModelo and mu.idUsu = us.idUsu Order by comentario;");
 
         $data = [];
         while ($obj = $db->getObject("Modelo_Usuario"))
@@ -84,7 +84,7 @@ class Modelo_Usuario {
 
     public static function findAll() {
         $db = Database::getInstance();
-        $db->query("SELECT * FROM Modelo_Usuario;");
+        $db->query("SELECT * FROM modelo_usuario;");
 
         $data = [];
         while ($obj = $db->getObject("Modelo_Usuario"))
@@ -96,8 +96,8 @@ class Modelo_Usuario {
 
     public static function find($codigoModelo): Modelo_Usuario {
         $db = Database::getInstance();
-        $db->query("SELECT * FROM Usuario us , Modelo_Usuario mu where  mu.codigoMod = $codigoModelo and mu.idUsu = us.idUsu;");
-        echo "SELECT * FROM Usuario us , Modelo_Usuario mu where  mu.codigoMod = $codigoModelo and mu.idUsu = us.idUsu;";
+        $db->query("SELECT * FROM usuario us , modelo_usuario mu where  mu.codigoMod = $codigoModelo and mu.idUsu = us.idUsu;");
+        //echo "SELECT * FROM Usuario us , Modelo_Usuario mu where  mu.codigoMod = $codigoModelo and mu.idUsu = us.idUsu;";
 
 
         //var_dump($db->getObject("Modelo_Usuario"));
@@ -106,7 +106,7 @@ class Modelo_Usuario {
 
     public static function MostrarFavoritos($idUsu): array {
         $db = Database::getInstance();
-        $db->query("SELECT DISTINCT * FROM modelo mo , Modelo_Usuario mu , marcas ma "
+        $db->query("SELECT DISTINCT * FROM modelo mo , modelo_usuario mu , marcas ma "
                 . "where mu.favorito = 1 and mu.idUsu= $idUsu and mo.CodigoMod = mu.codigoMod and mo.CodigoMarca=ma.CodigoMarca"
                 . "  Order by NombreMarca");
 
@@ -123,7 +123,7 @@ class Modelo_Usuario {
 
         $sesion = Sesion::getInstance();
         $id = $sesion->getUsuario();
-        $sql = "UPDATE Modelo_Usuario SET favorito= 1 WHERE idUsu= $id and codigoMod={$this->codigoMod};";
+        $sql = "UPDATE modelo_usuario SET favorito= 1 WHERE idUsu= $id and codigoMod={$this->codigoMod};";
 
         echo $sql;
         $db->query($sql);
@@ -139,7 +139,7 @@ class Modelo_Usuario {
         $sesion = Sesion::getInstance();
         $id = $sesion->getUsuario();
 
-        $sql = "UPDATE Modelo_Usuario SET favorito= 0 WHERE idUsu= $id and codigoMod={$this->codigoMod};";
+        $sql = "UPDATE modelo_usuario SET favorito= 0 WHERE idUsu= $id and codigoMod={$this->codigoMod};";
 
         echo $sql;
         $db->query($sql);
@@ -151,7 +151,7 @@ class Modelo_Usuario {
 
     public function save() {
         $db = Database::getInstance();
-        $sql = "INSERT INTO Modelo_Usuario (idUsu, codigoMod ,favorito, comentario) "
+        $sql = "INSERT INTO modelo_usuario (idUsu, codigoMod ,favorito, comentario) "
                 . "VALUES ({$this->idUsu}, {$this->CodigoMod},  {$this->favorito}, '{$this->Comentario}') ;";
 
 
