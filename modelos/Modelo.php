@@ -68,7 +68,7 @@ class Modelo {
      */
     public static function findAll($codigoMarca): array {
         $db = new Database();
-        $db->query("SELECT  NombreMod, CodigoMod, CodigoMarca, imagen,favorito FROM modelo WHERE codigoMarca= $codigoMarca order by 1;");
+        $db->query("SELECT  * FROM modelo WHERE codigoMarca= $codigoMarca order by 1;");
 
         $data = [];
         while ($obj = $db->getObject("Modelo"))
