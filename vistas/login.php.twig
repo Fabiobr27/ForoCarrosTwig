@@ -1,0 +1,59 @@
+{% extends "plantillaBase.php.twig" %}
+
+
+{% block titulo %}
+    <!--Fabio Benitez Ramirez-->
+    <h1 class="mt-4">Login</h1>
+{% endblock %}
+
+{% block contenido %}
+
+
+
+
+
+    <!-- logotipo -->
+    <div class="row">
+        <div class="col-sd-12 mx-auto">
+            <img class="logo" src="./imagenes/logo2.png" alt="ForoCarros" />
+        </div>
+    </div>
+
+
+    <form method="Get" action="/ForoCarrosTwig/index.php">
+        <input type="hidden" name="con" value="Login" />
+        <input type="hidden" name="ope" value="IniciarSesion" />
+
+        <div class="row mt-5 form-group">
+            <div class="col-md-12">
+                <input class="form-control w-25 mx-auto" type="text" 
+                       name="email" placeholder="email@forocarros.com" required />
+            </div>
+        </div>
+
+
+        <div class="row form-group">
+            <div class="col-md-12">
+                <input class="form-control w-25 mx-auto" type="password" 
+                       name="pass" placeholder="contraseña" required />
+            </div>
+        </div>
+
+
+        <div class="row form-group">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary w-25" type="submit">Entrar</button>
+            </div>
+        </div>
+
+    </form>
+
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="index.php?con=Login&ope=registro" class="btn btn-link">registrar</a>
+        </div>
+    </div>
+
+
+{% endblock %}
