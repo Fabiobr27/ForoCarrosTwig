@@ -80,7 +80,7 @@ class LoginController extends BaseController {
             $usu->insertar();
 
             
-           header("Location: index.php");
+           header("Location: /index.php");
 
         endif;
     }
