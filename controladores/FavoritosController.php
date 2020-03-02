@@ -18,7 +18,7 @@ class FavoritosController extends BaseController {
 
          $sesion = Sesion::getInstance();
         $id = $sesion->getUsuario();
-
+        print_r($id);
         $dat = Modelo_Usuario::MostrarFavoritos($id);
         echo $this->twig->render("showFavoritos.php.twig", ['dat' => $dat]);
     }
