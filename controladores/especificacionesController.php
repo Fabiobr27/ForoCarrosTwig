@@ -30,7 +30,7 @@ class especificacionesController extends BaseController {
         $sesion = Sesion::getInstance();
         $id = $sesion->getUsuario();
         
-        $usu = Usuario::find($id);
+        $usu = Usuario::find(3);
 
         echo $this->twig->render("showEspecificacion.php.twig", ['tab' => $tab, 'dat' => $dat, 'com' => $com, 'fav' => $fav, 'id' => $id , 'usu'=> $usu]);
     }
