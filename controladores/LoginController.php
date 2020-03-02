@@ -50,7 +50,7 @@ class LoginController extends BaseController {
 
         $ses = Sesion::getInstance();
         $ses->close();
-        $ses->redirect("../index.php");
+        $ses->redirect("index.php");
    
     }
 

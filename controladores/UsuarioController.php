@@ -1,4 +1,5 @@
 <?php
+
 // Controlador Usuario
 //Fabio Benitez Ramirez
 require_once "BaseController.php";
@@ -86,7 +87,7 @@ class UsuarioController extends BaseController {
 
         $usu->eliminar();
 
-        
+
         header("Location: index.php?con=Usuario&ope=mostrarCuentas");
     }
 
@@ -97,6 +98,39 @@ class UsuarioController extends BaseController {
         $usu->hacerAdmin();
 
         header("Location: index.php?con=Usuario&ope=mostrarCuentas");
+    }
+
+    public function editar() {
+        // buscamos el tablero
+        $dat = Usuario::find($_GET["id"]);
+
+        if (!isset($_GET["nom"])):
+
+            // mostramos el formulario de edición
+            //require_once "vistas/editBoard.php" ;
+            echo $this->twig->render("editCuenta.php.twig", ['dat' => $dat]);
+        else:
+
+            // actualizar la información en la 
+            // base de datos.
+            $nom = $_GET["nom"];
+            $fec = $_GET["fec"];
+            $ape = $_GET["ape"];
+            $ema = $_GET["ema"];
+            // actualizar los datos
+            
+            $dat->setNombre($nom);
+            $dat->setFecha($fec);
+            $dat->setApellidos($ape);
+            $dat->setEmail($ema);
+
+            // refrescar el objeto en la base de datos
+            $dat->save();
+
+            // redirigimos a la página principal
+             header("Location: index.php?con=Usuario&ope=mostrarPerfil&id=");
+             
+        endif;
     }
 
 }

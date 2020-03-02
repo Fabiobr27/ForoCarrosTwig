@@ -22,7 +22,8 @@
                 <h6 style="color: black" class="card-title">Tipo Usuario: {{dat.Tipo}}</h6>
 
                 <a class="btn btn-primary"  href="index.php?con=Favoritos&ope=listar">Ver favoritos</a>
-               
+                  <a class="btn btn-primary"  href="index.php?con=Usuario&ope=editar&id={{dat.idUsu}}">Editar Cuenta</a>
+                  <br>
                 {% if dat.Tipo == 'Admin' %}
                     <br>
                     <a class="btn btn-primary"  href="index.php?con=Usuario&ope=mostrarCuentas">Ver listado de Cuentas</a>

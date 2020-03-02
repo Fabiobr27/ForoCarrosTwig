@@ -127,4 +127,13 @@ class Usuario {
         $this->idUsu = $db->lastId();
     }
 
+    public function save() {
+
+        $db = Database::getInstance();
+        $consulta = "update usuario set nombre='" . $this->nombre . "',email='" . $this->email . "',fec_nac='" . $this->fec_nac . "',apellidos='" . $this->apellidos . "' where idUsu=" . $this->idUsu;
+
+        //echo $consulta;
+        $db->query($consulta);
+    }
+
 }

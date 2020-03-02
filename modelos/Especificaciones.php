@@ -40,7 +40,7 @@ class Especificaciones {
     }
 
     public function setCombustible($Combustible) {
-        $this->Combustible = $combustible;
+        $this->Combustible = $Combustible;
 
         return $this;
     }
@@ -55,20 +55,19 @@ class Especificaciones {
         return $this;
     }
 
-    public function getcodigoEspe() {
+    function getCodEspe() {
         return $this->CodEspe;
     }
 
-    public function setcodigoEspe($CodEspe) {
+    function setCodEspe($CodEspe) {
         $this->CodEspe = $CodEspe;
-
-        return $this;
     }
 
+    
    
     public static function findAll($codigoMod): array {
          $db =  Database::getInstance();;
-        $db->query("SELECT CodEspe, CodigoMod, Caballos, Año, Combustible FROM especificaciones WHERE codigoMod = $codigoMod;");
+        $db->query("SELECT * FROM especificaciones WHERE codigoMod = $codigoMod;");
 
         $data = [];
         while ($obj = $db->getObject("Especificaciones"))
@@ -78,16 +77,26 @@ class Especificaciones {
         return $data;
     }
     
-    public static function find($codigoMod): Especificaciones {
+    public static function find($codigoEspe): Especificaciones {
         $db =  Database::getInstance();
-        $db->query("SELECT CodEspe, CodigoMod, Caballos, Año, Combustible FROM especificaciones  WHERE codigoMod = $codigoMod;");
+        $db->query("SELECT CodEspe, CodigoMod, Caballos, Año, Combustible FROM especificaciones  WHERE codEspe= $codigoEspe;");
 
         return $db->getObject("Especificaciones");
     }
 
-    public function delete() {
+    public function eliminar() {
         $db =  Database::getInstance();
-        $db->query("DELETE FROM nota WHERE idNot={$this->idNot} ;");
+        $db->query("DELETE FROM especificaciones WHERE codEspe={$this->CodEspe} ;");
+    
+       // echo"DELETE FROM especificaciones WHERE codEspe= {$this->CodEspe} ;";
     }
 
+      public function save(){
+              $db =  Database::getInstance();
+            $consulta = "insert into especificaciones (caballos,combustible , codigoMod, año) values ({$this->Caballos},'{$this->Combustible}',{$this->CodigoMod},{$this->Año});";
+
+            echo $consulta;
+           $db->query($consulta);
+         $this->CodEspe = $db->lastId();
+        }
 }

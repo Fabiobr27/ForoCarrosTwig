@@ -302,60 +302,64 @@
 {% endblock %}
 {% block titulo %}
     <h1 class="mt-4">Especificacion</h1>
+
 {% endblock %}
 
 {% block contenido %}
+  
+        {% for item in dat %}
+
+            <div class="col col-lg-3">
+             
+                <div class="card bg-light mb-3 mx-auto" style="width:23rem;">
+                        {% if usu.Tipo == 'Admin' %}
+                       <a href="index.php?con=especificaciones&ope=anadir&id={{tab.codigoMod}}">Añadir Especificación<a/>
+        <a href="index.php?con=especificaciones&ope=borrar&id={{item.codEspe}}">Eliminar Especificación<a/>
+        {% endif %}
+                    <img src="{{tab.Imagen}}" class="card-img-top" />
+                    <div class="card-body text-center">
 
 
-
-    {% for item in dat %}
-
-        <div class="col col-lg-3">
-            <div class="card bg-light mb-3 mx-auto" style="width:23rem;">
-                <img src="{{tab.Imagen}}" class="card-img-top" />
-                <div class="card-body text-center">
+                        <h6 class="card-title">Caballos: {{item.Caballos}}</h6>
+                        <h6 class="card-title">Combustible: {{item.Combustible}}</h6>
+                        <h6 class="card-title">Año:{{item.Año}}</h6>
+                        <h6 class="card-title">codEspe:{{item.codEspe}}</h6>
 
 
-                    <h6 class="card-title">Caballos: {{item.Caballos}}</h6>
-                    <h6 class="card-title">Combustible: {{item.combustible}}</h6>
-                    <h6 class="card-title">Año:{{item.Año}}</h6>
+                       
+                            {% for ite in fav %}
+                                {% if ite.codigoMod == item.codigoMod  and  ite.idUsu == id %}
+                                    <a class="btn btn-primary"   href="index.php?con=Favoritos&ope=eliminarFav&id={{item.codigoMod}}">Eliminar de favoritos</a>
+                                    <a class="btn btn-primary"  href="index.php?con=Favoritos&ope=anadirFav&id={{item.codigoMod}}">Añadir a favoritos</a><br>
+                                    <br>
+                                {% endif %}
+                            {%endfor%}
+
+                            <a class="btn btn-primary"  href="index.php?con=Favoritos&ope=anadirComentario&id={{item.codigoMod}}">Añadir Comentarios</a>
+                    </div>	<!-- end-card-body -->
+                </div>	<!-- end-card -->
+            </div>	<!-- end-col -->
+
+        {%endfor%}
+        {% for item1 in com %}
+            {% if item1.comentario != "" %}
+                <div class="comment-box">
+                    <div class="comment-head">
+                        <h6 class="card-title">  {{item1.nombre}}   {{item1.apellidos}}</h6>
+                    </div>
+                    <div class="comment-content">
+
+                        {{item1.comentario}}
 
 
-                    {% for ite in fav %}
-                        {% if ite.codigoMod == item.codigoMod  and  ite.idUsu == id %}
-                            <a class="btn btn-primary"   href="index.php?con=Favoritos&ope=eliminarFav&id={{item.codigoMod}}">Eliminar de favoritos</a>
-                            <a class="btn btn-primary"  href="index.php?con=Favoritos&ope=anadirFav&id={{item.codigoMod}}">Añadir a favoritos</a><br>
-                            <br>
-                        {% endif %}
-                    {%endfor%}
-
-                    <a class="btn btn-primary"  href="index.php?con=Favoritos&ope=anadirComentario&id={{item.codigoMod}}">Añadir Comentarios</a>
-                </div>	<!-- end-card-body -->
-            </div>	<!-- end-card -->
-        </div>	<!-- end-col -->
-
-    {%endfor%}
+                    </div>
 
 
-    {% for item1 in com %}
-        {% if item1.comentario != "" %}
-            <div class="comment-box">
-                <div class="comment-head">
-                    <h6 class="card-title">  {{item1.nombre}}   {{item1.apellidos}}</h6>
                 </div>
-                <div class="comment-content">
-
-                    {{item1.comentario}}
 
 
-                </div>
+                <br>
+            {%endif%}
+        {%endfor%}
 
-
-            </div>
-
-
-            <br>
-        {%endif%}
-    {%endfor%}
-
-{% endblock %}
+    {% endblock %}

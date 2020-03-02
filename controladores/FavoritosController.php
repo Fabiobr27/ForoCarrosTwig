@@ -1,4 +1,5 @@
 <?php
+
 // Controlador Favoritos
 //Fabio Benitez Ramirez
 require_once "BaseController.php";
@@ -10,17 +11,13 @@ class FavoritosController extends BaseController {
 
     public function __construct() {
         parent::__construct();
-     
     }
 
-  
     public function listar() {
 
-         $sesion = Sesion::getInstance();
+        $sesion = Sesion::getInstance();
         $id = $sesion->getUsuario();
-        print_r($id);
-        print_r($sesion);
-        die();
+
         $dat = Modelo_Usuario::MostrarFavoritos($id);
         echo $this->twig->render("showFavoritos.php.twig", ['dat' => $dat]);
     }
@@ -36,7 +33,7 @@ class FavoritosController extends BaseController {
     public function eliminarFav() {
         $id = $_GET['id'];
         $usu = Modelo_Usuario::find($id);
-        
+
 
 
 
