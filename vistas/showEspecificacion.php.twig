@@ -306,15 +306,18 @@
 {% endblock %}
 
 {% block contenido %}
-  
+   {% if usu.Tipo == 'Admin' %}
+                       <a  style="color:white;"href="index.php?con=especificaciones&ope=anadir&id={{tab.codigoMod}}">Añadir Especificación<a/>
+        {% endif %}
         {% for item in dat %}
 
             <div class="col col-lg-3">
              
                 <div class="card bg-light mb-3 mx-auto" style="width:23rem;">
-                        {% if usu.Tipo == 'Admin' %}
-                       <a href="index.php?con=especificaciones&ope=anadir&id={{tab.codigoMod}}">Añadir Especificación<a/>
-        <a href="index.php?con=especificaciones&ope=borrar&id={{item.codEspe}}">Eliminar Especificación<a/>
+                       
+                {% if usu.Tipo == 'Admin' %}
+                       
+        <a href="index.php?con=especificaciones&ope=borrar&id={{item.codEspe}}&cod={{tab.codigoMod}}">Eliminar Especificación<a/>
         {% endif %}
                     <img src="{{tab.Imagen}}" class="card-img-top" />
                     <div class="card-body text-center">
@@ -328,8 +331,8 @@
 
                        
                             {% for ite in fav %}
-                                {% if ite.codigoMod == item.codigoMod  and  ite.idUsu == id %}
-                                    <a class="btn btn-primary"   href="index.php?con=Favoritos&ope=eliminarFav&id={{item.codigoMod}}">Eliminar de favoritos</a>
+                                {% if ite.codigoMod == item.codigoMod  and  ite.idUsu == 3 %}
+                                    <a class="btn btn-primary"   href="index.php?con=Favoritos&ope=eliminarFav&cod={{item.codigoMod}}">Eliminar de favoritos</a>
                                     <a class="btn btn-primary"  href="index.php?con=Favoritos&ope=anadirFav&id={{item.codigoMod}}">Añadir a favoritos</a><br>
                                     <br>
                                 {% endif %}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2020 a las 19:38:39
+-- Tiempo de generación: 02-03-2020 a las 22:26:54
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -150,8 +150,7 @@ INSERT INTO `marcas` (`NombreMarca`, `CodigoMarca`, `AñoFundacion`, `logo`) VAL
 ('Skoda', 27, 1900, 'Imagenes/Logos/skoda.png'),
 ('Subaru', 28, 1900, 'Imagenes/Logos/subaru.jpg'),
 ('Toyota', 29, 1900, 'Imagenes/Logos/toyota.jpg'),
-('Volkswagen', 30, 1900, 'Imagenes/Logos/volkswagen.jpg'),
-('Prueba', 60, 1900, '');
+('Volkswagen', 30, 1900, 'Imagenes/Logos/volkswagen.jpg');
 
 -- --------------------------------------------------------
 
@@ -320,6 +319,7 @@ INSERT INTO `modelo_usuario` (`idUsu`, `codigoMod`, `comentario`, `favorito`) VA
 (3, 11, 'Hola', 0),
 (3, 20, 'ugeru', 0),
 (3, 34, 'Quiero Probarlo', 0),
+(3, 39, 'Hola', 0),
 (3, 45, '', 1),
 (3, 120, 'Me gusta', 0),
 (10, 1, 'Hola', 0),
@@ -354,9 +354,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsu`, `email`, `pass`, `nombre`, `apellidos`, `fec_nac`, `foto`, `Tipo`) VALUES
-(3, 'fabio2000br@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Fabio', 'Benitez', '2019-10-10', 'Imagenes\\FotoUsuario\\defecto.png', 'Admin'),
+(3, 'fabio2000br@gmail.com    ', '81dc9bdb52d04dc20036dbd8313ed055', 'Fabio    ', 'Benitez', '2019-10-10', 'Imagenes\\FotoUsuario\\defecto.png', 'Admin'),
 (10, 'admin@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Luis', 'Lopez', '2020-02-05', '	\r\nImagenes/FotoUsuario/defecto.png', 'Admin'),
-(18, 'fabio2000br1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Fabio', 'Benitez', '0000-00-00', 'Imagenes/FotoUsuario/defecto.png', 'normal');
+(18, 'fabio2000br1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Fabio', 'Benitez', '0000-00-00', 'Imagenes/FotoUsuario/defecto.png', 'normal'),
+(19, 'prueba@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Fabio', 'Benitez', '0000-00-00', 'Imagenes/FotoUsuario/defecto.png', 'normal'),
+(20, 'prueba@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Fabio', 'Benitez', '0000-00-00', 'Imagenes/FotoUsuario/defecto.png', 'normal');
 
 --
 -- Índices para tablas volcadas
@@ -404,13 +406,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `especificaciones`
 --
 ALTER TABLE `especificaciones`
-  MODIFY `CodEspe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `CodEspe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idUsu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas

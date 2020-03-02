@@ -18,12 +18,12 @@ class FavoritosController extends BaseController {
         $sesion = Sesion::getInstance();
         $id = $sesion->getUsuario();
 
-        $dat = Modelo_Usuario::MostrarFavoritos(3);
+        $dat = Modelo_Usuario::MostrarFavoritos($id);
         echo $this->twig->render("showFavoritos.php.twig", ['dat' => $dat]);
     }
 
     public function anadirFav() {
-        $id = $_GET['id'];
+        $id = $_GET['cod'];
         $usu = Modelo_Usuario::find($id);
 
         $usu->anadirFav();
@@ -31,7 +31,7 @@ class FavoritosController extends BaseController {
     }
 
     public function eliminarFav() {
-        $id = $_GET['id'];
+        $id = $_GET['cod'];
         $usu = Modelo_Usuario::find($id);
 
 

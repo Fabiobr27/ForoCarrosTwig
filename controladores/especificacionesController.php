@@ -30,7 +30,7 @@ class especificacionesController extends BaseController {
         $sesion = Sesion::getInstance();
         $id = $sesion->getUsuario();
         
-        $usu = Usuario::find(3);
+        $usu = Usuario::find($id);
 
         echo $this->twig->render("showEspecificacion.php.twig", ['tab' => $tab, 'dat' => $dat, 'com' => $com, 'fav' => $fav, 'id' => $id , 'usu'=> $usu]);
     }
@@ -70,12 +70,13 @@ class especificacionesController extends BaseController {
         
         public function borrar() {
         $id = $_GET['id'];
+        $cod = $_GET['cod'];
         $espe = Especificaciones::find($id);
 
         $espe->eliminar();
 
 
-        header("Location:index.php?con=especificaciones&ope=listar&id=$id");
+        header("Location:index.php?con=especificaciones&ope=listar&id=$cod");
     }
         
     }
