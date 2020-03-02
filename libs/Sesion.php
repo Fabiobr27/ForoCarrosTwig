@@ -7,7 +7,7 @@ require_once("modelos/Usuario.php");
 
 class Sesion {
 
-    private $usuario;
+    public $usuario;
     private $time_expire = 1800;    // segundos
     private static $instancia = null;
 
